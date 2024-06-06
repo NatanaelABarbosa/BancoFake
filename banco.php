@@ -7,8 +7,8 @@ echo "O número é: $numero\n";
 */
 
 //cabeçário inicial
-$nome = $argv[1];
-$saldo = $argv[2];
+$nome = (string) $argv[1];
+$saldo = (int) $argv[2];
 $divisor = "******************";
 $consultarSaldo = "1. Consultar saldo atual";
 $opcaoSacar = "2. Sacar valor";
