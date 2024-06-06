@@ -79,14 +79,10 @@ while($sair != true){
             $sair = true;
         break;
 
-        case $opcao > 4 :
-            echo "Opção invalida\n";
+        default :
+            echo "Opção invalida, tente denovo\n";
             $opcao = (int) fgets(STDIN);
         break;
-        
-        case $opcao < 1:
-            echo "Opção invalida\n";
-            $opcao = (int) fgets(STDIN);
     }
 
 }
