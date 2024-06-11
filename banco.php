@@ -1,44 +1,43 @@
 <?php
 
-/*
-echo "Digite um numero: \n";
-$numero = (int) fgets(STDIN);
-echo "O número é: $numero\n";
-*/
-
 //cabeçário inicial
-$nome = (string) $argv[1];
+
+
+function cabecario($titular, $grana)
+{
+     $divisor = "******************";
+
+    echo $divisor . "\n";
+    echo "Titular: $$titular\n";
+    echo "Saldo: R$$grana\n";
+    echo $divisor . "\n";
+}
+
+$nome = (string) $argv[1]; 
 $saldo = (int) $argv[2];
-$divisor = "******************";
-$consultarSaldo = "1. Consultar saldo atual";
-$opcaoSacar = "2. Sacar valor";
-$opcaoDepositar = "3. Depositar valor";
-$opcaoSair = "4. Sair";
+
+cabecario($nome, $saldo);
 
 
-echo $divisor . "\n";
-echo "Titular: $nome\n";
-echo "Saldo: R$$saldo\n";
-echo $divisor . "\n";
-echo $consultarSaldo . "\n";
-echo $opcaoSacar . "\n";
-echo $opcaoDepositar . "\n";
-echo $opcaoSair . "\n";
+function opcoes()
+{
+    echo "1. Consultar saldo atual\n";
+    echo "2. Sacar valor\n";
+    echo "3. Depositar valor\n";
+    echo "4. Sair\n";
+}
+
+opcoes();
 
 $opcao = (int) fgets(STDIN);
 $sair = false;
 
 while($sair != true){
-    switch($opcao){
+    switch($opcao)
+    {
         case 1:
-            echo $divisor . "\n";
-            echo "Titular: $nome\n";
-            echo "Saldo : R$$saldo\n";
-            echo $divisor . "\n";
-            echo $consultarSaldo . "\n";
-            echo $opcaoSacar . "\n";
-            echo $opcaoDepositar . "\n";
-            echo $opcaoSair . "\n";
+            cabecario($nome, $saldo);
+            opcoes();
             $opcao = (int) fgets(STDIN);
         break;
 
@@ -48,12 +47,11 @@ while($sair != true){
             if ($sacar > $saldo || $sacar < 0) {
                 echo "Dados incorretos, aperte enter para tentar novamente";
                 $sacar = (int) fgets(STDIN);
-            }else {
+            }
+            else 
+            {
                 $saldo-= $sacar;
-                echo $consultarSaldo . "\n";
-                echo $opcaoSacar . "\n";
-                echo $opcaoDepositar . "\n";
-                echo $opcaoSair . "\n";
+                opcoes();
                 $opcao = (int) fgets(STDIN);
             }
         break;
@@ -61,15 +59,16 @@ while($sair != true){
         case 3:
             echo "Qual valor deseja depositar?\n";
             $depositar = (int) fgets(STDIN);
-            if($depositar <= 0){
+            if($depositar <= 0)
+            {
                 echo "Dados incorretos, aperte enter para tentar novamente";
                 $depositar = (int) fgets(STDIN);
-            }else{
+            }
+            else
+            {
                 $saldo+= $depositar;
-                echo $consultarSaldo . "\n";
-                echo $opcaoSacar . "\n";
-                echo $opcaoDepositar . "\n";
-                echo $opcaoSair . "\n";
+                opcoes();
+
                 $opcao = (int) fgets(STDIN);
             }
         break;
